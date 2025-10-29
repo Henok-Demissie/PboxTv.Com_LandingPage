@@ -1,0 +1,32 @@
+
+> my-v0-project@0.1.0 build C:\Users\HP\Downloads\saas-component-library (1)
+> next build
+
+  ▲ Next.js 14.2.25
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Skipping validation of types
+   Linting ...
+ ⨯ ESLint: Invalid Options: - Unknown options: useEslintrc, extensions - 'extensions' has been removed.
+   Collecting page data ...
+   Generating static pages (0/5) ...
+   Generating static pages (1/5) 
+   Generating static pages (2/5) 
+   Generating static pages (3/5) 
+ ✓ Generating static pages (5/5)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    13.6 kB         175 kB
+├ ○ /_not-found                          871 B            88 kB
+└ ○ /ui-library                          2.75 kB         158 kB
++ First Load JS shared by all            87.2 kB
+  ├ chunks/79-7a5543d7f0d1413a.js        31.6 kB
+  ├ chunks/927609c1-258f176d8113c236.js  53.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)  prerendered as static content
+
