@@ -88,19 +88,19 @@ export function FeaturesSection() {
                   <ScrollReveal delay={index * 0.1}>
                     <GlowingTiltCard tiltAmount={0} glareOpacity={0}>
                       <Card
-                        className={`h-full glassmorphic-card overflow-hidden group ${feature.borderClass} focus-visible:outline-none`}
+                        className={`h-full glassmorphic-card overflow-visible ${feature.borderClass} focus-visible:outline-none`}
                       >
                         <CardHeader>
-                          <div className="p-2 rounded-xl w-fit bg-muted/50 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                          <div className="p-2 rounded-xl w-fit bg-muted/50">
                             {feature.icon}
                           </div>
                           <CardTitle className="mt-4 tracking-tight relative">
                             {feature.title}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                            <span className="hidden"></span>
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                          <CardDescription className="text-base opacity-70 transition-opacity duration-300 group-hover:opacity-100">
+                          <CardDescription className="text-base opacity-80">
                             {feature.description}
                           </CardDescription>
 

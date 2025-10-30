@@ -39,6 +39,18 @@ export function SiteHeader() {
     setMobileMenuOpen(false)
   }
 
+  React.useEffect(() => {
+    // Prevent background scroll when mobile menu is open
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [mobileMenuOpen])
+
   // Only enable hover-triggered dropdowns on fine pointers (mouse). On touch/coarse devices, rely on clicks.
   const isFinePointer = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(pointer:fine)").matches
 
@@ -167,10 +179,11 @@ export function SiteHeader() {
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300 will-change-transform",
         hideHeader ? "-translate-y-full" : "translate-y-0",
-        // Make header fully opaque on small screens; use translucency only on md+
-        scrollPosition > 10
-          ? "bg-background md:bg-background/95 md:backdrop-blur-lg border-b border-border/40 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]"
-          : "bg-background md:bg-background/90",
+        mobileMenuOpen
+          ? "bg-black"
+          : scrollPosition > 10
+            ? "bg-background md:bg-background/95 md:backdrop-blur-lg border-b border-border/40 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]"
+            : "bg-background md:bg-background/90",
       )}
       ref={headerRef}
     >
@@ -295,24 +308,18 @@ export function SiteHeader() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 bg-background md:bg-background/50 md:backdrop-blur-sm md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
+          <motion.div className="fixed inset-0 z-[60] bg-black" initial={false} animate={{ opacity: 1 }} exit={{ opacity: 1 }}>
             <motion.div
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-background shadow-xl border-l border-border"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              className="mx-auto my-6 w-[92%] max-w-sm h-[calc(100%-3rem*2)] rounded-2xl bg-black text-white border border-red-500/30 shadow-[0_0_30px_rgba(239,68,68,0.45)]"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
             >
-              <div className="flex items-center justify-between p-3 border-b border-border">
+              <div className="flex items-center justify-between p-3 border-b border-white/15 rounded-t-2xl">
                 <Link
                   href="/"
                   className="flex items-center space-x-1 hover:opacity-80 transition-opacity"
@@ -324,55 +331,74 @@ export function SiteHeader() {
                 </Link>
                 <button
                   onClick={closeMobileMenu}
-                  className="p-1.5 rounded-full hover:bg-muted transition-colors"
+                  className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X className="text-foreground h-5 w-5" />
+                  <X className="h-5 w-5" />
                 </button>
               </div>
 
-              <div className="py-3 px-2">
-                <nav className="flex flex-col space-y-1">
-                  <button className="px-4 py-3 text-base font-medium text-foreground hover:bg-muted rounded-md transition-colors flex items-center gap-2">
-                    <Search className="h-5 w-5" />
-                    Search
-                  </button>
+              <div className="flex h-[calc(100%-56px)] flex-col px-4 py-4">
+                {/* Single black container for all content */}
+                <div className="rounded-md bg-black">
+                  {/* Search row */}
+                  <div className="pt-2 px-2">
+                    <div className="flex items-center gap-2 rounded-md border border-white/15 bg-black px-3 py-2 focus-within:ring-2 focus-within:ring-red-500/60">
+                      <Search className="h-4 w-4 text-white/80" />
+                      <input
+                        type="text"
+                        placeholder="Find Movies & TV"
+                        className="bg-transparent text-base text-white placeholder:text-white/60 outline-none w-full"
+                      />
+                      <button
+                        className="inline-flex items-center justify-center px-3 py-1.5 rounded-md bg-red-600 text-white text-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 hover:shadow-[0_0_18px_rgba(239,68,68,0.5)] transition"
+                        aria-label="Search"
+                      >
+                        Search
+                      </button>
+                    </div>
+                  </div>
 
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="px-4 py-3 text-base font-medium text-foreground hover:bg-muted rounded-md transition-colors"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        document.querySelector(item.href)?.scrollIntoView({
-                          behavior: "smooth",
-                        })
-                        closeMobileMenu()
-                      }}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
+                  {/* Primary menu items */}
+                  <nav className="flex flex-col mt-2">
+                    {navItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="px-3 py-3 text-lg font-medium bg-black text-white rounded-none hover:bg-white/10 focus:bg-white/15 focus:outline-none transition-colors hover:ring-2 hover:ring-red-500 hover:shadow-[0_0_18px_rgba(239,68,68,0.4)]"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" })
+                          closeMobileMenu()
+                        }}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </nav>
 
-              <div className="mt-auto p-3 border-t border-border">
-                <div className="grid grid-cols-2 gap-2">
-                  <Button
-                    variant="outline"
-                    className="w-full bg-transparent hover:bg-muted/50 transition-colors"
-                    asChild
-                  >
-                    <Link href="#signin" onClick={closeMobileMenu}>
-                      Sign In
-                    </Link>
-                  </Button>
-                  <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black transition-colors" asChild>
-                    <Link href="#signup" onClick={closeMobileMenu}>
-                      Sign Up
-                    </Link>
-                  </Button>
+                  {/* Bottom actions */}
+                  <div className="pt-4 pb-4 px-2">
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button
+                        variant="outline"
+                        className="w-full bg-black border-white/30 text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-red-500 hover:shadow-[0_0_18px_rgba(239,68,68,0.4)]"
+                        asChild
+                      >
+                        <Link href="#signin" onClick={closeMobileMenu}>
+                          Sign In
+                        </Link>
+                      </Button>
+                      <Button
+                        className="w-full bg-yellow-400 hover:bg-yellow-500 text-black focus:outline-none focus:ring-2 focus:ring-red-500 hover:shadow-[0_0_18px_rgba(239,68,68,0.4)]"
+                        asChild
+                      >
+                        <Link href="#signup" onClick={closeMobileMenu}>
+                          Sign Up
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
