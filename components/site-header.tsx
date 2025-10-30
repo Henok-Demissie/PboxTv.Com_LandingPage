@@ -167,7 +167,10 @@ export function SiteHeader() {
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300 will-change-transform",
         hideHeader ? "-translate-y-full" : "translate-y-0",
-        scrollPosition > 10 ? "bg-background/95 backdrop-blur-lg border-b border-border/40 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]" : "bg-background/90",
+        // Make header fully opaque on small screens; use translucency only on md+
+        scrollPosition > 10
+          ? "bg-background md:bg-background/95 md:backdrop-blur-lg border-b border-border/40 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]"
+          : "bg-background md:bg-background/90",
       )}
       ref={headerRef}
     >
@@ -293,7 +296,7 @@ export function SiteHeader() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-background/50 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-background md:bg-background/50 md:backdrop-blur-sm md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

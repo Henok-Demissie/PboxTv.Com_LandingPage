@@ -59,8 +59,11 @@ export function GlowingTiltCard({
       animate={{
         rotateX: tilt.x,
         rotateY: tilt.y,
-        scale: isHovered ? 1.03 : 1,
-        boxShadow: isHovered ? "0 20px 30px rgba(0, 0, 0, 0.2)" : "0 10px 20px rgba(0, 0, 0, 0.1)",
+        // Softer hover when tilt is disabled to make the effect feel less sensitive
+        scale: isHovered ? (tiltAmount > 0 ? 1.03 : 1.01) : 1,
+        boxShadow: isHovered
+          ? (tiltAmount > 0 ? "0 20px 30px rgba(0, 0, 0, 0.2)" : "0 12px 22px rgba(0, 0, 0, 0.16)")
+          : "0 10px 20px rgba(0, 0, 0, 0.1)",
       }}
       transition={{
         type: "spring",
@@ -71,7 +74,7 @@ export function GlowingTiltCard({
       {...props}
     >
       <div
-        className="pointer-events-none absolute inset-0 z-10 rounded-xl transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 z-10 rounded-xl transition-opacity duration-500"
         style={{
           opacity: isHovered ? glareOpacity : 0,
           background: `radial-gradient(circle at ${glarePosition.x}px ${glarePosition.y}px, rgba(255, 255, 255, ${glareOpacity}), transparent 50%)`,

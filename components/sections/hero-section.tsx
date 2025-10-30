@@ -12,6 +12,7 @@ import { ScrollReveal } from "@/components/scroll-reveal"
 import { MagneticButton } from "@/components/ui/magnetic-button"
 import { AnimatedBackground } from "@/components/ui/animated-background"
 import { GradientButton } from "@/components/ui-library/buttons/gradient-button"
+import { heroPosters2024_2025 } from "@/app/data/posters"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,23 +35,28 @@ const itemVariants = {
 }
 
 export function HeroSection() {
-  const posters = [
-    "https://image.tmdb.org/t/p/w780/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-    "https://image.tmdb.org/t/p/w780/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-    "https://image.tmdb.org/t/p/w780/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
-    "https://image.tmdb.org/t/p/w780/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
-    "https://image.tmdb.org/t/p/w780/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-    "https://image.tmdb.org/t/p/w780/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg",
-  ]
+  const posters = heroPosters2024_2025
+  const collage = React.useMemo(() => {
+    const total = 200 // heavily overfill to ensure no empty spaces on large screens
+    return Array.from({ length: total }, (_, i) => posters[i % posters.length])
+  }, [posters])
 
   return (
     <section id="home" className="relative w-full min-h-[80vh] md:min-h-[88vh] overflow-hidden">
       {/* Background collage */}
       <div className="absolute inset-0 -z-10">
-        <div className="grid h-full w-full grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-1 opacity-50">
-          {posters.concat(posters).map((src, i) => (
+        <div className="grid grid-flow-row dense h-full w-full grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-1 opacity-50">
+          {collage.map((src, i) => (
             <div key={i} className="relative aspect-[2/3]">
-              <img src={src} alt="poster" className="absolute inset-0 h-full w-full object-cover" />
+              <img
+                src={src}
+                alt="poster"
+                className="absolute inset-0 h-full w-full object-cover"
+                onError={(e) => {
+                  const fallback = "/placeholder/poster.svg"
+                  if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
+                }}
+              />
             </div>
           ))}
         </div>

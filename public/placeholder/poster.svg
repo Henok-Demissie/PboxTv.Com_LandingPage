@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#1f1f1f"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#g)"/>
+  <rect x="15" y="15" width="270" height="420" rx="12" ry="12" fill="none" stroke="#ef4444" opacity="0.35"/>
+  <g fill="#ffffff" opacity="0.85">
+    <text x="150" y="225" text-anchor="middle" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="16">Poster</text>
+  </g>
+</svg>
+
