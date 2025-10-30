@@ -64,7 +64,7 @@ export function FeaturesSection() {
           <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
             <div className="space-y-4">
               <AnimatedText
-                text="Stream Smarter with Premium Features"
+                text="More Reasons to Join"
                 variant="heading"
                 className="text-3xl [font-family:var(--font-heading)] font-bold tracking-tighter sm:text-5xl gradient-text"
                 animation="slide"
@@ -81,41 +81,45 @@ export function FeaturesSection() {
         </ScrollReveal>
 
         <ParallaxScroll baseVelocity={0.1} direction="up" className="py-12">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <GlowingTiltCard>
-                  <Card
-                    className={`h-full glassmorphic-card border-none overflow-hidden group soft-glow ${feature.borderClass}`}
-                  >
-                    <CardHeader>
-                      <div className="p-2 rounded-xl w-fit bg-muted/50 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                        {feature.icon}
-                      </div>
-                      <CardTitle className="mt-4 tracking-tight relative">
-                        {feature.title}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <CardDescription className="text-base opacity-70 transition-opacity duration-300 group-hover:opacity-100">
-                        {feature.description}
-                      </CardDescription>
+          <div className="no-scrollbar mx-auto max-w-[100vw] overflow-x-auto">
+            <div className="flex gap-6 snap-x snap-mandatory px-1">
+              {features.map((feature, index) => (
+                <div key={index} className="min-w-[320px] md:min-w-[380px] lg:min-w-[420px] snap-start">
+                  <ScrollReveal delay={index * 0.1}>
+                    <GlowingTiltCard tiltAmount={0} glareOpacity={0}>
+                      <Card
+                        className={`h-full glassmorphic-card overflow-hidden group ${feature.borderClass} focus-visible:outline-none`}
+                      >
+                        <CardHeader>
+                          <div className="p-2 rounded-xl w-fit bg-muted/50 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                            {feature.icon}
+                          </div>
+                          <CardTitle className="mt-4 tracking-tight relative">
+                            {feature.title}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          <CardDescription className="text-base opacity-70 transition-opacity duration-300 group-hover:opacity-100">
+                            {feature.description}
+                          </CardDescription>
 
-                      <ProgressCard
-                        title=""
-                        progress={feature.progress}
-                        total={100}
-                        status={feature.progress === 100 ? "success" : "default"}
-                        showPercentage
-                        variant="minimal"
-                        progressColor={feature.progress === 100 ? "bg-green-500" : "bg-red-500"}
-                      />
-                    </CardContent>
-                  </Card>
-                </GlowingTiltCard>
-              </ScrollReveal>
-            ))}
+                          <ProgressCard
+                            title=""
+                            progress={feature.progress}
+                            total={100}
+                            status={feature.progress === 100 ? "success" : "default"}
+                            showPercentage
+                            variant="minimal"
+                            progressColor={feature.progress === 100 ? "bg-green-500" : "bg-red-500"}
+                          />
+                        </CardContent>
+                      </Card>
+                    </GlowingTiltCard>
+                  </ScrollReveal>
+                </div>
+              ))}
+            </div>
           </div>
         </ParallaxScroll>
       </div>

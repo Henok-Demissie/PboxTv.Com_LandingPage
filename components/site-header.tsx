@@ -21,6 +21,8 @@ import { DownloadDropdown, MoviesDropdown, LiveTVDropdown, FeaturesDropdown } fr
 export function SiteHeader() {
   const pathname = usePathname()
   const scrollPosition = useScrollPosition()
+  const lastScrollRef = React.useRef(0)
+  const [hideHeader, setHideHeader] = React.useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const [searchFocused, setSearchFocused] = React.useState(false)
   const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
@@ -151,11 +153,21 @@ export function SiteHeader() {
     }
   }, [])
 
+  // Auto-hide header on scroll down, show on scroll up
+  React.useEffect(() => {
+    const last = lastScrollRef.current
+    const goingDown = scrollPosition > last
+    const beyondThreshold = scrollPosition > 120
+    setHideHeader(goingDown && beyondThreshold)
+    lastScrollRef.current = scrollPosition
+  }, [scrollPosition])
+
   return (
     <header
       className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300",
-        scrollPosition > 10 ? "bg-background/95 backdrop-blur-lg border-b border-border/40" : "bg-background/90",
+        "fixed top-0 z-50 w-full transition-all duration-300 will-change-transform",
+        hideHeader ? "-translate-y-full" : "translate-y-0",
+        scrollPosition > 10 ? "bg-background/95 backdrop-blur-lg border-b border-border/40 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]" : "bg-background/90",
       )}
       ref={headerRef}
     >
@@ -221,7 +233,7 @@ export function SiteHeader() {
                         id={`${id}-menu`}
                         role="menu"
                         aria-labelledby={id}
-                        className="absolute top-full left-1/2 mt-3 z-50 pointer-events-auto min-w-[420px] max-w-4xl transform -translate-x-1/2 will-change-transform"
+                        className="fixed top-16 left-0 right-0 z-50 pointer-events-auto mx-auto w-full max-w-6xl px-4 will-change-transform"
                         initial={{ opacity: 0, y: -8 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -8 }}
@@ -249,14 +261,14 @@ export function SiteHeader() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-sm font-medium text-foreground hover:text-primary hover:bg-muted/30 transition-all duration-200 px-3"
+              className="text-sm font-medium text-foreground hover:text-primary hover:bg-muted/30 transition-all duration-200 px-3 rounded-full border border-transparent hover:border-red-500/50 hover:shadow-[0_0_18px_rgba(239,68,68,0.35)]"
               asChild
             >
               <Link href="#signin">Sign In</Link>
             </Button>
             <Button
               size="sm"
-              className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold transition-all duration-200 hover:shadow-lg px-5"
+              className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold transition-all duration-200 hover:shadow-[0_0_22px_rgba(255,215,0,0.35)] px-5 rounded-full"
               asChild
             >
               <Link href="#signup">Sign Up Free</Link>
@@ -265,7 +277,7 @@ export function SiteHeader() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex items-center justify-center p-1.5 rounded-md hover:bg-muted transition-colors"
+            className="md:hidden flex items-center justify-center p-1.5 rounded-md bg-background border border-border hover:bg-muted transition-colors"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
             aria-expanded={String(mobileMenuOpen)}

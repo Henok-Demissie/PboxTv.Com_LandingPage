@@ -1,9 +1,8 @@
 import { HeroSection } from "@/components/sections/hero-section"
 import { FeaturesSection } from "@/components/sections/features-section"
-import { ComponentLibraryShowcase } from "@/components/sections/component-library-showcase"
+import { TrendingSection } from "@/components/sections/trending-section"
 import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { PricingSection } from "@/components/sections/pricing-section"
-import { BlogSection } from "@/components/sections/blog-section"
 import { FaqSection } from "@/components/sections/faq-section"
 import { CtaSection } from "@/components/sections/cta-section"
 import { MouseGlow } from "@/components/ui-library/effects/mouse-glow"
@@ -24,11 +23,10 @@ export default function HomePage() {
       />
 
       <HeroSection />
+      <TrendingSection />
       <FeaturesSection />
-      <ComponentLibraryShowcase />
       <TestimonialsSection />
       <PricingSection />
-      <BlogSection />
       <FaqSection />
       <CtaSection />
     </main>

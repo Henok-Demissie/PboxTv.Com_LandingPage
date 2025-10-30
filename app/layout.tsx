@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { PageTransition } from "@/components/page-transition"
+import { Toaster } from "@/components/ui/toaster"
 
 import "@/app/globals.css"
 import { Suspense } from "react"
@@ -55,6 +56,7 @@ export default function RootLayout({
               </PageTransition>
             </Suspense>
             <SiteFooter />
+            <Toaster />
           </div>
         </ThemeProvider>
       </body>

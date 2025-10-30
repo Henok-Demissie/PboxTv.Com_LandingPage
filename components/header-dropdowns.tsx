@@ -29,7 +29,7 @@ export function DownloadDropdown() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full max-w-4xl rounded-xl shadow-xl p-6 z-50 border bg-background/95 border-primary/30 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+      className="w-full max-w-4xl rounded-xl shadow-xl p-6 z-50 border bg-background border-primary/30"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left column: Get the App */}
@@ -108,7 +108,7 @@ export function MoviesDropdown() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full max-w-6xl rounded-xl shadow-2xl p-6 md:p-8 z-50 border bg-background/95 border-primary/30 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+      className="w-full max-w-6xl rounded-xl shadow-2xl p-6 md:p-8 z-50 border bg-background border-primary/30"
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {/* Explore */}
@@ -143,22 +143,7 @@ export function MoviesDropdown() {
           </div>
         </div>
 
-        {/* Highlights */}
-        <div>
-          <h3 className="text-sm font-semibold text-foreground mb-3 md:mb-4">Highlights</h3>
-          <div className="space-y-2 min-w-[18rem]">
-            {[
-              { title: "Top 10 in Your Country", desc: "Updated daily" },
-              { title: "4K & Dolby Atmos", desc: "Premium picture and sound" },
-              { title: "Editor’s Picks", desc: "Hand‑curated gems" },
-            ].map((h) => (
-              <div key={h.title} className="rounded-lg p-3 border border-border/50 hover:border-primary/40 transition-colors">
-                <p className="text-sm font-medium leading-6 tracking-tight text-foreground">{h.title}</p>
-                <p className="text-xs leading-5 text-muted-foreground mt-1">{h.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Highlights removed per request */}
       </div>
     </motion.div>
   )
@@ -196,7 +181,7 @@ export function LiveTVDropdown() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full max-w-6xl rounded-xl shadow-2xl p-6 md:p-8 z-50 border bg-background/95 border-primary/30 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+      className="w-full max-w-6xl rounded-xl shadow-2xl p-6 md:p-8 z-50 border bg-background border-primary/30"
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {/* Explore */}
@@ -229,22 +214,7 @@ export function LiveTVDropdown() {
           </div>
         </div>
 
-        {/* Highlights */}
-        <div>
-          <h3 className="text-sm font-semibold text-foreground mb-3 md:mb-4">Highlights</h3>
-          <div className="space-y-2 min-w-[18rem]">
-            {[
-              { title: "24/7 News", desc: "Live updates across global networks" },
-              { title: "Sports Live", desc: "Catch the games in real time" },
-              { title: "Always Funny", desc: "Non‑stop comedy channels" },
-            ].map((h) => (
-              <div key={h.title} className="rounded-lg p-3 border border-border/50 hover:border-primary/40 transition-colors">
-                <p className="text-sm font-medium leading-6 tracking-tight text-foreground">{h.title}</p>
-                <p className="text-xs leading-5 text-muted-foreground mt-1">{h.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Highlights removed per request */}
       </div>
     </motion.div>
   )
@@ -257,7 +227,7 @@ export function FeaturesDropdown() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="w-full max-w-4xl rounded-xl shadow-xl p-8 z-50 border bg-background/95 border-primary/30 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+      className="w-full max-w-4xl rounded-xl shadow-xl p-8 z-50 border bg-background border-primary/30"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* PboxTv for All */}

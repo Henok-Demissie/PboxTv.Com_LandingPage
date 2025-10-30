@@ -307,6 +307,44 @@
     transform: scaleX(1);
   }
 
+  /* Hide scrollbars utility for horizontal carousels */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  /* Animated curve separator */
+  @keyframes curveDash {
+    to {
+      stroke-dashoffset: 300;
+    }
+  }
+  @keyframes curveGlow {
+    0% {
+      opacity: 0.7;
+      filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.45)) drop-shadow(0 0 24px rgba(239, 68, 68, 0.25));
+    }
+    100% {
+      opacity: 1;
+      filter: drop-shadow(0 0 14px rgba(239, 68, 68, 0.7)) drop-shadow(0 0 36px rgba(239, 68, 68, 0.5));
+    }
+  }
+  .curve-accent path {
+    stroke-dasharray: 12 10;
+    animation: curveDash 6s linear infinite, curveGlow 2.2s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.5));
+  }
+
+  /* Outlined ranking numbers */
+  .number-outline {
+    -webkit-text-stroke: 8px rgba(0, 0, 0, 0.65);
+    paint-order: stroke fill;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+  }
+
   @keyframes gradientFlow {
     0% {
       background-position: 0% 50%;
@@ -349,55 +387,109 @@
 
   .border-glow-red {
     border: 1px solid rgba(239, 68, 68, 0.3);
-    transition: border-color 300ms;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0), 0 0 12px rgba(239, 68, 68, 0.25);
+    transition: border-color 300ms, box-shadow 300ms;
   }
 
   .border-glow-red:hover {
-    border-color: rgba(239, 68, 68, 0.6);
+    border-color: rgba(239, 68, 68, 0.75);
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2), 0 0 18px rgba(239, 68, 68, 0.5);
+  }
+
+  .border-glow-red:active,
+  .border-glow-red:focus-visible {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25), 0 0 22px rgba(239, 68, 68, 0.6);
+    outline: none;
   }
 
   .border-glow-blue {
     border: 1px solid rgba(59, 130, 246, 0.3);
-    transition: border-color 300ms;
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0), 0 0 12px rgba(59, 130, 246, 0.25);
+    transition: border-color 300ms, box-shadow 300ms;
   }
 
   .border-glow-blue:hover {
-    border-color: rgba(59, 130, 246, 0.6);
+    border-color: rgba(59, 130, 246, 0.75);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2), 0 0 18px rgba(59, 130, 246, 0.5);
+  }
+
+  .border-glow-blue:active,
+  .border-glow-blue:focus-visible {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25), 0 0 22px rgba(239, 68, 68, 0.6);
+    outline: none;
   }
 
   .border-glow-purple {
     border: 1px solid rgba(168, 85, 247, 0.3);
-    transition: border-color 300ms;
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0), 0 0 12px rgba(168, 85, 247, 0.25);
+    transition: border-color 300ms, box-shadow 300ms;
   }
 
   .border-glow-purple:hover {
-    border-color: rgba(168, 85, 247, 0.6);
+    border-color: rgba(168, 85, 247, 0.75);
+    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2), 0 0 18px rgba(168, 85, 247, 0.5);
+  }
+
+  .border-glow-purple:active,
+  .border-glow-purple:focus-visible {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25), 0 0 22px rgba(239, 68, 68, 0.6);
+    outline: none;
   }
 
   .border-glow-green {
     border: 1px solid rgba(34, 197, 94, 0.3);
-    transition: border-color 300ms;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0), 0 0 12px rgba(34, 197, 94, 0.25);
+    transition: border-color 300ms, box-shadow 300ms;
   }
 
   .border-glow-green:hover {
-    border-color: rgba(34, 197, 94, 0.6);
+    border-color: rgba(34, 197, 94, 0.75);
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 0 18px rgba(34, 197, 94, 0.5);
+  }
+
+  .border-glow-green:active,
+  .border-glow-green:focus-visible {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25), 0 0 22px rgba(239, 68, 68, 0.6);
+    outline: none;
   }
 
   .border-glow-yellow {
     border: 1px solid rgba(234, 179, 8, 0.3);
-    transition: border-color 300ms;
+    box-shadow: 0 0 0 0 rgba(234, 179, 8, 0), 0 0 12px rgba(234, 179, 8, 0.25);
+    transition: border-color 300ms, box-shadow 300ms;
   }
 
   .border-glow-yellow:hover {
-    border-color: rgba(234, 179, 8, 0.6);
+    border-color: rgba(234, 179, 8, 0.75);
+    box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.2), 0 0 18px rgba(234, 179, 8, 0.5);
+  }
+
+  .border-glow-yellow:active,
+  .border-glow-yellow:focus-visible {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25), 0 0 22px rgba(239, 68, 68, 0.6);
+    outline: none;
   }
 
   .border-glow-orange {
     border: 1px solid rgba(249, 115, 22, 0.3);
-    transition: border-color 300ms;
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0), 0 0 12px rgba(249, 115, 22, 0.25);
+    transition: border-color 300ms, box-shadow 300ms;
   }
 
   .border-glow-orange:hover {
-    border-color: rgba(249, 115, 22, 0.6);
+    border-color: rgba(249, 115, 22, 0.75);
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2), 0 0 18px rgba(249, 115, 22, 0.5);
+  }
+
+  .border-glow-orange:active,
+  .border-glow-orange:focus-visible {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25), 0 0 22px rgba(239, 68, 68, 0.6);
+    outline: none;
   }
 }
