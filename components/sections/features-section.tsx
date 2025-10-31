@@ -124,12 +124,12 @@ export function FeaturesSection() {
                   >
                     {isVisible ? (
                       <GlowingTiltCard tiltAmount={5} glareOpacity={0.2}>
-                        <Card className={`h-full glassmorphic-card overflow-visible ${feature.borderClass} transition-all duration-500`}>
+                        <Card className={`h-full min-h-[210px] glassmorphic-card overflow-visible ${feature.borderClass} transition-all duration-500`}>
                           {cardContent}
                         </Card>
                       </GlowingTiltCard>
                     ) : (
-                      <Card className={`h-full glassmorphic-card overflow-visible ${feature.borderClass} opacity-70 transition-all duration-500`}>
+                      <Card className={`h-full min-h-[210px] glassmorphic-card overflow-visible ${feature.borderClass} opacity-70 transition-all duration-500`}>
                         {cardContent}
                       </Card>
                     )}
