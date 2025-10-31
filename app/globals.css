@@ -316,6 +316,24 @@
     display: none; /* Chrome, Safari */
   }
 
+  /* Mobile scrollbar styles */
+  @media (max-width: 767px) {
+    .overflow-x-auto::-webkit-scrollbar {
+      height: 4px;
+      display: block;
+    }
+    .overflow-x-auto::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .overflow-x-auto::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.6);
+      border-radius: 2px;
+    }
+    .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+      background: rgba(156, 163, 175, 0.8);
+    }
+  }
+
   /* Animated curve separator */
   @keyframes curveDash {
     to {
