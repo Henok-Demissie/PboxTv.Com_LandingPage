@@ -60,12 +60,12 @@ export function FeaturesSection() {
   }, [checkScrollPosition])
 
   const features = [
-    { icon: <Film className="h-7 w-7 text-red-500" />, title: "4K Ultra HD & HDR", description: "Experience cinema-grade picture with 4K, Dolby Vision, and HDR10.", progress: 100, borderClass: "border-glow-red" },
-    { icon: <Download className="h-7 w-7 text-blue-500" />, title: "Offline Downloads", description: "Save movies and shows to watch later without internet.", progress: 100, borderClass: "border-glow-blue" },
-    { icon: <Zap className="h-7 w-7 text-yellow-500" />, title: "Lightning Fast Streaming", description: "Optimized delivery for instant playback with adaptive bitrate.", progress: 100, borderClass: "border-glow-yellow" },
-    { icon: <Tv className="h-7 w-7 text-green-500" />, title: "Watch on Any Device", description: "TV, mobile, tablet, and web with seamless handoff. Enjoy it.", progress: 100, borderClass: "border-glow-green" },
-    { icon: <Sparkles className="h-7 w-7 text-purple-500" />, title: "Personalized Picks", description: "AI recommendations tailored to your taste and watch history.", progress: 100, borderClass: "border-glow-purple" },
-    { icon: <Shield className="h-7 w-7 text-orange-500" />, title: "Parental Controls", description: "Profile locks, content ratings, and safe viewing for families.", progress: 100, borderClass: "border-glow-orange" },
+    { icon: <Film className="h-7 w-7 text-red-500" />, title: "4K Ultra HD & HDR", description: "Experience cinema-grade picture quality with stunning 4K resolution and HDR10 technology for amazing visuals.", progress: 100, borderClass: "border-glow-red" },
+    { icon: <Download className="h-7 w-7 text-blue-500" />, title: "Offline Downloads", description: "Save your favorite movies and shows to watch later anytime without needing an internet connection.", progress: 100, borderClass: "border-glow-blue" },
+    { icon: <Zap className="h-7 w-7 text-yellow-500" />, title: "Lightning Fast Streaming", description: "Optimized delivery technology ensures instant playback with adaptive bitrate for smooth viewing.", progress: 100, borderClass: "border-glow-yellow" },
+    { icon: <Tv className="h-7 w-7 text-green-500" />, title: "Watch on Any Device", description: "TV, mobile, tablet, and web with seamless handoff between devices. Enjoy it anywhere.", progress: 100, borderClass: "border-glow-green" },
+    { icon: <Sparkles className="h-7 w-7 text-purple-500" />, title: "Personalized Picks", description: "AI-powered recommendations that are perfectly tailored to your unique taste and watch history.", progress: 100, borderClass: "border-glow-purple" },
+    { icon: <Shield className="h-7 w-7 text-orange-500" />, title: "Parental Controls", description: "Profile locks, content ratings, and safe viewing options to protect what your family watches.", progress: 100, borderClass: "border-glow-orange" },
   ]
 
   return (
