@@ -48,11 +48,11 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <div className="relative flex min-h-screen flex-col">
+          <div className="relative flex min-h-screen flex-col overflow-x-hidden">
             <SiteHeader />
             <Suspense>
               <PageTransition>
-                <div className="flex-1">{children}</div>
+                <div className="flex-1 w-full overflow-x-hidden">{children}</div>
               </PageTransition>
             </Suspense>
             <SiteFooter />

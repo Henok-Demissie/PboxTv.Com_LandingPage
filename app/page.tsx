@@ -9,7 +9,7 @@ import { MouseGlow } from "@/components/ui-library/effects/mouse-glow"
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col items-center relative">
+    <main className="flex flex-col w-full relative overflow-x-hidden">
       {/* Enhanced global cursor effect with subtle red glow */}
       <MouseGlow
         color="rgba(220, 38, 38, 0.12)"

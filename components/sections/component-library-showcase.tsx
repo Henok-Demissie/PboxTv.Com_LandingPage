@@ -18,7 +18,7 @@ export function ComponentLibraryShowcase() {
   const [activeTab, setActiveTab] = useState("cards")
 
   return (
-    <section id="movies" className="w-full py-12 md:py-24 lg:py-32 overflow-hidden">
+    <section id="movies" className="w-full py-12 md:py-16 lg:py-20">
       <div className="container px-6 md:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">

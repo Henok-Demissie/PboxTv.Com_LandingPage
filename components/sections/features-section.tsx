@@ -17,7 +17,7 @@ export function FeaturesSection() {
   ]
 
   return (
-    <section id="features" className="relative w-full py-12 md:py-24 lg:py-32 bg-muted/30 overflow-hidden">
+    <section id="features" className="relative w-full py-12 md:py-16 lg:py-20 bg-muted/30">
       <div className="container px-6 md:px-8">
         <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
           <div className="space-y-4">
@@ -31,10 +31,10 @@ export function FeaturesSection() {
         </div>
 
         <div className="py-12">
-          <div className="no-scrollbar mx-auto max-w-[100vw] overflow-x-auto">
-            <div className="flex gap-6 px-1">
+          <div className="no-scrollbar overflow-x-auto -mx-6 md:-mx-8">
+            <div className="flex gap-6 px-6 md:px-8">
               {features.map((feature, index) => (
-                <div key={index} className="min-w-[320px] md:min-w-[380px] lg:min-w-[420px]">
+                <div key={index} className="min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-[420px] flex-shrink-0">
                   <GlowingTiltCard tiltAmount={0} glareOpacity={0}>
                     <Card className={`h-full glassmorphic-card overflow-visible ${feature.borderClass}`}>
                       <CardHeader>

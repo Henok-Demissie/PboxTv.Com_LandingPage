@@ -32,10 +32,10 @@ export function TestimonialsSection() {
   ]
 
   return (
-    <section id="testimonials" className="relative w-full py-12 md:py-24 lg:py-32 bg-muted/30 overflow-hidden">
+    <section id="testimonials" className="relative w-full py-12 md:py-16 lg:py-20 bg-muted/30">
       <AnimatedBackground variant="waves" color="rgba(220, 38, 38, 0.05)" />
 
-      <div className="container px-4 md:px-6">
+      <div className="container px-6 md:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
